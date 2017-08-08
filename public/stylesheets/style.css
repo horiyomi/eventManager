@@ -1,0 +1,14 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+.events-container{
+	border: 2px grey solid;
+	height: auto;
+	width: 100%;
+	padding: 20px;
+	margin-bottom: 20px;
+}

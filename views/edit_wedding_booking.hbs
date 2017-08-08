@@ -1,0 +1,55 @@
+<div class="row">
+
+	<div class="col-md-8">
+		<h1 class="text-center">Category: {{category}}</h1>
+		{{#each wedding}}
+		<div class="events-container">
+			<h3>Wedding Between {{this.names.bride}}(Bride) AND {{this.names.groom}}(Groom)</h1>
+			<h3>Booking Name: {{this.names.bookingName}}</h3>
+			<h3>Event Venue: {{this.venue}}</h3>
+			<h3>Phone: {{this.phone}}</h3>
+			<p><strong>Booking Date: {{this.bookingDate}}</strong></p>
+			<p><strong>Event Date: {{this.eventDate}}</strong></p>
+
+		</div>
+		{{/each}}
+	</div>
+
+	<div class="col-md-4">
+		<h1 class="text-center">Edit Booking</h1>
+		<form action="/edit/booking/{{wedding._id}}" method="POST">
+			<div class="form-group row">	
+				<label>Booking Name</label>
+				<input class="form-control" type="text" name="bookingName" value="wedding.names.bookingName">
+			</div>
+			<div class="form-group row">	
+				<label>Groom Name</label>
+				<input class="form-control" type="text" name="groom" value="wedding.names.groom">
+			</div>
+			<div class="form-group row">	
+				<label>Bride Name</label>
+				<input class="form-control" type="text" name="bride" value="wedding.names.bride">
+			</div>
+			<div class="form-group row">	
+				<label>Event Venue</label>
+				<input class="form-control" type="text" name="venue" value="wedding.venue">
+			</div>
+			<div class="form-group row">	
+				<label>Phone Number</label>
+				<input class="form-control" type="tel" maxlength="11" name="phone" value="wedding.phone">
+			</div>
+			<div class="form-group row">	
+				<label>Event Date</label>
+				<input class="form-control" type="date" name="eventDate" value="wedding.eventDate">
+			</div>
+			<div class="form-group row">	
+				<label>Booking Date</label>
+				<input class="form-control" type="date" name="bookingDate" value="wedding.bookingDate">
+			</div>
+			<div class="form-group row">	
+				<input type="submit" value="Submit" class="btn btn-primary btn-block">
+			</div>
+			
+		</form>
+	</div>
+</div>
