@@ -60,6 +60,40 @@ router.get('/edit/booking/:id',(req,res)=>{
 		res.render('edit_wedding_booking',{wedding:wedding});
 	});
 });
+// Updating Booking
+router.post('/edit/booking/:id',(req,res)=>{
+	let wedding = {
+		names:{}
+	};
+		wedding.names.groom = req.body.groom;
+		wedding.names.bride = req.body.bride;
+		wedding.names.bookingName = req.body.bookingName;
+		wedding.venue = req.body.venue;
+		wedding.bookingDate = req.body.bookingDate;
+		wedding.phone = req.body.phone;
+		wedding.eventDate = req.body.eventDate;
 
+	let query = {_id:req.params.id}
+	Wedding.update(query,wedding,(err)=>{
+		if (err) {
+			console.log(err);
+			return;
+		}
+		// req.flash('success','Booking updated successfully')
+		res.redirect('/wedding');
+	})
 
+});
+// Deleting Booking Route
+router.delete('/:id',(req,res)=>{
+	let query = {_id:req.params.id}
+	Wedding.remove(query,(err)=>{
+		if(err){
+			console.log(err);
+			return;
+		}
+		// req.flash('success','Booking Deleted');
+		res.send("Success");
+	});
+});
 module.exports = router;

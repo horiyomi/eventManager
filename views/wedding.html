@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+{% block content %}
+	<div class="row">
+		<div class="col-md-8">
+			<h1 class="text-center">Category: {{category}}</h1>
+			{% for wedding in wedding %}
+				<div class="events-container">
+					<h3>Wedding Between {{wedding.names.bride}}(Bride) AND {{wedding.names.groom}}(Groom)</h1>
+					<h3>Booking Name: {{wedding.names.bookingName}}</h3>
+					<h3>Event Venue: {{wedding.venue}}</h3>
+					<h3>Phone: {{wedding.phone}}</h3>
+					<p><strong>Booking Date: {{wedding.bookingDate}}</strong></p>
+					<p><strong>Event Date: {{wedding.eventDate}}</strong></p>
+					<div class="row">
+						<a href="/wedding/edit/booking/{{wedding.id}}"><button class="btn btn-default">Edit</button></a>
+						<a href="#" class="delete-booking" data-id="{{wedding._id}}"><button class="btn btn-danger">Delete</button></a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+
+		<div class="col-md-4">
+			<h1 class="text-center">New Booking</h1>
+			<form action="/wedding/booking" method="POST">
+				<div class="form-group row">	
+					<label>Booking Name</label>
+					<input class="form-control" type="text" name="bookingName">
+				</div>
+				<div class="form-group row">	
+					<label>Groom Name</label>
+					<input class="form-control" type="text" name="groom">
+				</div>
+				<div class="form-group row">	
+					<label>Bride Name</label>
+					<input class="form-control" type="text" name="bride">
+				</div>
+				<div class="form-group row">	
+					<label>Event Venue</label>
+					<input class="form-control" type="text" name="venue">
+				</div>
+				<div class="form-group row">	
+					<label>Phone Number</label>
+					<input class="form-control" type="tel" maxlength="11" name="phone">
+				</div>
+				<div class="form-group row">	
+					<label>Event Date</label>
+					<input class="form-control" type="date" name="eventDate">
+				</div>
+				<div class="form-group row">	
+					<label>Booking Date</label>
+					<input class="form-control" type="date" name="bookingDate">
+				</div>
+				<div class="form-group row">	
+					<input type="submit" value="Submit" class="btn btn-primary btn-block">
+				</div>
+				
+			</form>
+		</div>
+	</div>
+{% endblock %}

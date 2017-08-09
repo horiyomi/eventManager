@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const expressValidator = require('express-validator');
 const flash = require('express-flash');
 const session = require('express-session');
+const engine = require('consolidate');
 
 // Establishing connection to Mongodb
 mongoose.connect('mongodb://localhost:27017/eventsManager',{useMongoClient:true});
@@ -32,8 +33,9 @@ var wedding = require('./routes/wedding');
 var app = express();
 
 // view engine setup
+app.engine('html',engine.nunjucks)
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+app.set('view engine', 'html');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
